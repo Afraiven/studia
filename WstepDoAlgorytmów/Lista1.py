@@ -1,4 +1,4 @@
-# Filip Antoniak 279929
+# Filip Antoniak
 # INS - Wstęp do algortymów #L
 # Lista 1
 import numpy as np
