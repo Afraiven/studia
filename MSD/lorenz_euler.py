@@ -8,7 +8,7 @@ beta = 8/3
 x, y, z = 1.0, 1.0, 1.0
 
 #dt
-h = 0.01
+h = 0.0001
 stop = 25
 
 x_wartosci, y_wartosci, z_wartosci = [x], [y], [z]
@@ -30,9 +30,40 @@ while t <= stop:
 
 fig = plt.figure(figsize=(10, 8))
 ax = fig.add_subplot(111, projection='3d')
-ax.plot(x_wartosci, y_wartosci, z_wartosci, lw=0.5)
-ax.set_title('Trajektoria układu Lorenza')
+ax.plot(x_wartosci, y_wartosci, z_wartosci, lw=1)
+ax.set_title('Układ Lorenza zamodelowany przy pomocy metody Eulera (python)')
 ax.set_xlabel('X')
 ax.set_ylabel('Y')
 ax.set_zlabel('Z')
 plt.show()
+
+# plt.figure(figsize=(7, 6))
+# plt.plot(x_wartosci, y_wartosci, linestyle='-', color='r')
+# plt.title(f'''Układ Lorenza zamodelowany przy pomocy metody Eulera (python)
+#           dt = {h}''')
+# plt.xlabel('X')
+# plt.ylabel('Y')
+# plt.legend()
+# plt.grid(True)
+# plt.show()
+
+
+# plt.figure(figsize=(7, 6))
+# plt.plot(x_wartosci, z_wartosci, linestyle='-', color='g')
+# plt.title(f'''Układ Lorenza zamodelowany przy pomocy metody Eulera (python)
+#           dt = {h}''')
+# plt.xlabel('X')
+# plt.ylabel('Z')
+# plt.legend()
+# plt.grid(True)
+# plt.show()
+
+# plt.figure(figsize=(7, 6))
+# plt.plot(y_wartosci, z_wartosci, linestyle='-', color='b')
+# plt.title(f'''Układ Lorenza zamodelowany przy pomocy metody Eulera (python)
+#           dt = {h}''')
+# plt.xlabel('Y')
+# plt.ylabel('Z')
+# plt.legend()
+# plt.grid(True)
+# plt.show()
