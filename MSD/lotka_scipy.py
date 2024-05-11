@@ -9,33 +9,30 @@ def lotka_volterra(y, t, a, b, c, d):
     dydt = -y * (d - c * x)
     return [dxdt, dydt]
 
-# Parametry modelu
 a = 1.2
 b = 0.6
 c = 0.3
 d = 0.8
 
-# Warunki początkowe
 x0 = 2
 y0 = 1
 initial_conditions = [x0, y0]
 
-# Wektor czasu
-t = np.linspace(0, 25, 400)
+dt = 3
+kroki = int(25/dt) + 1
+t = np.linspace(0, 25, kroki)
 
-# Rozwiązanie równań różniczkowych
 solution = odeint(lotka_volterra, initial_conditions, t, args=(a, b, c, d))
 
-# Rozpakowanie rozwiązania
 x, y = solution.T
 
-# Tworzenie wykresu
 plt.figure(figsize=(10, 5))
-plt.plot(t, x, label='Ofiary (x)')
-plt.plot(t, y, label='Drapieżnicy (y)')
-plt.title('Dynamika populacji w modelu Lotki-Volterry')
-plt.xlabel('Czas')
-plt.ylabel('Populacja')
+plt.plot(t, x, label='Ofiary (x)', color="r")
+plt.plot(t, y, label='Drapieżnicy (y)', color="b")
+plt.title(f'''Układ Lotki-Volterry zamodelowany przy pomocy funckji odeint (scipy)
+          dt = {dt}''')
+plt.xlabel('t')
+plt.ylabel('Populacje')
 plt.legend()
 plt.grid(True)
 plt.show()

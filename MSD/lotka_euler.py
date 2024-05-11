@@ -5,7 +5,7 @@ x0, last_x = 2, 2
 y0, last_y = 1, 1
 t = 0
 #dt
-h = 0.002
+h = 1
 stop = 25
 a = 1.2
 b = 0.6
@@ -30,7 +30,8 @@ while t <= stop:
 plt.figure(figsize=(10, 5))
 plt.plot(t_wartosci, x_wartosci, label='Ofiary (x)', linestyle='-', color='red')
 plt.plot(t_wartosci, y_wartosci, label='Drapieżnicy (y)', linestyle='-', color='blue')
-plt.title('Układ Lotki-Volterry zamodelowany przy pomocy metody Eulera (python)')
+plt.title(f'''Układ Lotki-Volterry zamodelowany przy pomocy metody Eulera (python)
+          dt = {h}''')
 plt.xlabel('t')
 plt.ylabel('Populacje')
 plt.legend()
