@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
+import time
 sigma = 10.0
 rho = 28.0
 beta = 8/3
@@ -8,7 +9,7 @@ beta = 8/3
 x, y, z = 1.0, 1.0, 1.0
 
 #dt
-h = 0.0001
+h = 0.001
 stop = 25
 
 x_wartosci, y_wartosci, z_wartosci = [x], [y], [z]
@@ -27,6 +28,7 @@ while t <= stop:
     y_wartosci.append(y)
     z_wartosci.append(z)
     t_wartosci.append(t)
+
 
 fig = plt.figure(figsize=(10, 8))
 ax = fig.add_subplot(111, projection='3d')

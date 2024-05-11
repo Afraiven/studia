@@ -18,13 +18,15 @@ x0 = 2
 y0 = 1
 initial_conditions = [x0, y0]
 
-dt = 3
+dt = 0.01
 kroki = int(25/dt) + 1
 t = np.linspace(0, 25, kroki)
 
 solution = odeint(lotka_volterra, initial_conditions, t, args=(a, b, c, d))
 
 x, y = solution.T
+
+
 
 plt.figure(figsize=(10, 5))
 plt.plot(t, x, label='Ofiary (x)', color="r")

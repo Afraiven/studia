@@ -5,7 +5,7 @@ x0, last_x = 2, 2
 y0, last_y = 1, 1
 t = 0
 #dt
-h = 1
+h = 0.1
 stop = 25
 a = 1.2
 b = 0.6
@@ -26,7 +26,9 @@ while t <= stop:
     last_y = y
     t += h
     t_wartosci.append(t)
-    
+print(len(x_wartosci))
+
+print(len(y_wartosci))
 plt.figure(figsize=(10, 5))
 plt.plot(t_wartosci, x_wartosci, label='Ofiary (x)', linestyle='-', color='red')
 plt.plot(t_wartosci, y_wartosci, label='Drapieżnicy (y)', linestyle='-', color='blue')

@@ -3,6 +3,8 @@ from scipy.integrate import odeint
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
+import time
+start = time.perf_counter()
 # Definicja funkcji Lorenza
 def lorenz_system(state, t, sigma, rho, beta):
     x, y, z = state
@@ -30,11 +32,12 @@ solution = odeint(lorenz_system, initial_state, t, args=(sigma, rho, beta))
 
 # Rozpakowanie rozwiązania
 x_wartosci, y_wartosci, z_wartosci = solution.T
+print(time.perf_counter() - start)
 
 # # Tworzenie wykresu 3D
 # fig = plt.figure(figsize=(12, 8))
 # ax = fig.add_subplot(111, projection='3d')
-# ax.plot(x, y, z, lw=0.5)
+# ax.plot(x_wartosci, y_wartosci, z_wartosci, lw=1)
 # ax.set_title('Trajektoria układu Lorenza')
 # ax.set_xlabel('X')
 # ax.set_ylabel('Y')
@@ -42,33 +45,33 @@ x_wartosci, y_wartosci, z_wartosci = solution.T
 # plt.show()
 
 
-plt.figure(figsize=(7, 6))
-plt.plot(x_wartosci, y_wartosci, linestyle='-', color='r')
-plt.title(f'''Układ Lorenza zamodelowany przy pomocy funkcji odeint (python)
-          dt = {h}''')
-plt.xlabel('X')
-plt.ylabel('Y')
-plt.legend()
-plt.grid(True)
-plt.show()
+# plt.figure(figsize=(7, 6))
+# plt.plot(x_wartosci, y_wartosci, linestyle='-', color='r')
+# plt.title(f'''Układ Lorenza zamodelowany przy pomocy funkcji odeint (python)
+#           dt = {h}''')
+# plt.xlabel('X')
+# plt.ylabel('Y')
+# plt.legend()
+# plt.grid(True)
+# plt.show()
 
 
-plt.figure(figsize=(7, 6))
-plt.plot(x_wartosci, z_wartosci, linestyle='-', color='g')
-plt.title(f'''Układ Lorenza zamodelowany przy pomocy funkcji odeint (python)
-          dt = {h}''')
-plt.xlabel('X')
-plt.ylabel('Z')
-plt.legend()
-plt.grid(True)
-plt.show()
+# plt.figure(figsize=(7, 6))
+# plt.plot(x_wartosci, z_wartosci, linestyle='-', color='g')
+# plt.title(f'''Układ Lorenza zamodelowany przy pomocy funkcji odeint (python)
+#           dt = {h}''')
+# plt.xlabel('X')
+# plt.ylabel('Z')
+# plt.legend()
+# plt.grid(True)
+# plt.show()
 
-plt.figure(figsize=(7, 6))
-plt.plot(y_wartosci, z_wartosci, linestyle='-', color='b')
-plt.title(f'''Układ Lorenza zamodelowany przy pomocy funkcji odeint (python)
-          dt = {h}''')
-plt.xlabel('Y')
-plt.ylabel('Z')
-plt.legend()
-plt.grid(True)
-plt.show()
+# plt.figure(figsize=(7, 6))
+# plt.plot(y_wartosci, z_wartosci, linestyle='-', color='b')
+# plt.title(f'''Układ Lorenza zamodelowany przy pomocy funkcji odeint (python)
+#           dt = {h}''')
+# plt.xlabel('Y')
+# plt.ylabel('Z')
+# plt.legend()
+# plt.grid(True)
+# plt.show()
