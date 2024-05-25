@@ -1,4 +1,4 @@
-# Lista 10 Filip Antoniak
+# Lista 11 Filip Antoniak
 # Zadanie 1
 
 frekwencja = c(171, 200, 168, 213, 226, 222)
