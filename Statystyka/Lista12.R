@@ -39,7 +39,7 @@ liczba_obserwacji <- sum(sapply(wagi, length))
 
 (sredni_kwadrat_mg = mg / swoboda_mg)
 (sredni_kwadrat_wg = wg / swoboda_wg)
-(sredni_kwadrat_c = c / swoboda_c)
+(sredni_kwadrat_c = NA)
 
 tabela = data.frame(
   SumaKwadratow = c(mg, wg, c),
@@ -47,7 +47,10 @@ tabela = data.frame(
   SredniaKwadratow = c(sredni_kwadrat_mg, sredni_kwadrat_wg, sredni_kwadrat_c)
 )
 tabela
-
+#SumaKwadratow StopnieSwobody SredniaKwadratow
+#1      390.9091              2        195.45455
+#2      402.0000              8         50.25000
+#3      792.9091             10         NA
 # b) --------------------------------------------------------
 (f = sredni_kwadrat_mg / sredni_kwadrat_wg)
 
@@ -72,6 +75,8 @@ mieszkania = read.csv2("C:/Users/Filip/Desktop/Studia/Statystyka/mieszkania.csv"
 aov = aov(Metraz ~ Dzielnica, data = mieszkania)
 summary(aov)
 # p = 5.17e-07 *** więc są bardzo mocne dowody by odrzucic hipoteze h0
+# wniosek:
+# metraż zależy od dzielnicy 
 
 # b) --------------------------------------------------------
 (tukey = TukeyHSD(aov))
@@ -83,7 +88,7 @@ summary(aov)
 # a) --------------------------------------------------------
 mieszkania$DuzoPokoi = ifelse(mieszkania$Pokoje >= 4, 4, mieszkania$Pokoje)
 # aby ominąć błąd w TukeyHSD trzeba ustawić duzopokoi jako czynnik
-mieszkania$DuzoPokoi <- as.factor(mieszkania$DuzoPokoi)
+mieszkania$DuzoPokoi = as.factor(mieszkania$DuzoPokoi)
 # b) --------------------------------------------------------
 # h0 = cena za m2 nie zależy od liczby pokoi.
 mieszkania$CenaZaM2 = mieszkania$Cena / mieszkania$Metraz
@@ -92,11 +97,21 @@ aov = aov(CenaZaM2 ~ DuzoPokoi, data = mieszkania)
 summary(aov)
 # p = <2e-16 *** < 0.05 
 # więc są bardzo mocne dowody by odrzucic hipoteze h0
-
+# wniosek:
+# cena za m2 zależy od liczby pokoi.
+ 
 # c) --------------------------------------------------------
 (tukey = TukeyHSD(aov))
 # jeśli p spełnia wymaganie co do istotności to można założyc że różnica dla 
 # j-tej pary jest równa diff_j
+#
+#          diff        lwr         upr     p adj
+#2-1  -642.6367  -949.8866  -335.38670 0.0000005
+#3-1 -1019.8853 -1332.9697  -706.80096 0.0000000
+#4-1 -1396.7195 -1787.2839 -1006.15499 0.0000000
+#3-2  -377.2486  -585.6502  -168.84710 0.0000212
+#4-2  -754.0828 -1067.0524  -441.11315 0.0000000
+#4-3  -376.8342  -695.5335   -58.13481 0.0128262
 # w każdym wypadku p był niższy niż 0.05 więc są silne / bardzo silne dowody by
 # wykazać zależność ilości pokoi od ceny za metraż
 # np dla 4 pokojowych jest o 1396[zł / m^2] niższa niż dla 1 pokojowych
